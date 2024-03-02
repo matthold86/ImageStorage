@@ -1,7 +1,7 @@
 # AWS Image Processing Pipeline
 
 ### Summary:
-This repository contains 3 lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval.
+This repository contains 3 lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval. The image object is stored in an S3 database and the S3ObjectKey is stored in a DynamoDB database for quick access querying from the web application.
 
 ### Pipeline Description:
 The pipeline starts on a static website (I used my personal website as a demo). When a user uploads an image via the "upload" interface. An http request is sent to the first lambda function `s3bucket-presignkey`. The lambda function requests a presigned upload key from the S3 bucket using an authorized IAM role. The S3 bucket returns a presigned key and the lambda function passes the key back to the static website in the http response. A javascript event handler is then able to use the presigned key to upload the image directly to the S3 bucket. This method was chosen because it utilizes AWS user authentication roles and applys the principle of least privaledge to each entity in the pipeline. 
