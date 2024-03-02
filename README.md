@@ -1,4 +1,4 @@
-# ImageStorage
+# AWS Image Processing Pipeline
 
 ### Summary:
 This repository contains 3 lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval.
