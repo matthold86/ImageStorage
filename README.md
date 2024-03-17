@@ -3,6 +3,13 @@
 ### Summary:
 This repository contains 3 lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval. The image object is stored in an S3 database and the S3ObjectKey is stored in a DynamoDB database for quick access querying from the web application.
 
+### Cargo Lambda:
+The lambda functions shown in this repository were replicated as Cargo Lambda functions and provided in the links below. Because cargo lambda functions require a binary zip file deployed to AWS lambda, all three functions had to be replicated and compiled in separate repositories before deployment. Each lambda function contains X-Ray tracing and Cloudwatch logging for comprehensive monitoring of the entire pipeline.
+
+[s3presignedkey_rust_lambda](https://github.com/matthold86/s3presignedkey_rust_lambda): Retrieve S3 presigned key. <br>
+[imagemetadata_rust_lambda](): Monitor S3 bucket; extract and store image S3ObjectKey in DynamoDB. <br>
+[retrieveimage_rust_lambda](): Query DynamoDB; retrieve image S3ObjectKey. <br>
+
 ### Pipeline Description:
 The pipeline starts on a static website (I used my personal website as a demo). When a user uploads an image via the "upload" interface. An http request is sent to the first lambda function `s3bucket-presignkey`. The lambda function requests a presigned upload key from the S3 bucket using an authorized IAM role. The S3 bucket returns a presigned key and the lambda function passes the key back to the static website in the http response. A javascript event handler is then able to use the presigned key to upload the image directly to the S3 bucket. This method was chosen because it utilizes AWS user authentication roles and applys the principle of least privaledge to each entity in the pipeline. 
 
