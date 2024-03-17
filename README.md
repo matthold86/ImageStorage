@@ -1,7 +1,7 @@
 # AWS Image Processing Pipeline
 
 ### Summary:
-This repository contains 3 lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval. The image object is stored in an S3 database and the S3ObjectKey is stored in a DynamoDB database for quick access querying from the web application.
+This repository contains 3 python lambda files that make up an image processing pipeline built in AWS. The pipeline allows a user to upload an image to an S3 bucket via a web application interface and retrieve that image to be displayed on the web application. Although this is a simple task, it is the basic structure for completely automated image upload, storage, and retrieval. The image object is stored in an S3 database and the S3ObjectKey is stored in a DynamoDB database for quick access querying from the web application.
 
 ### Cargo Lambda:
 The lambda functions shown in this repository were replicated as Cargo Lambda functions and provided in the links below. Because cargo lambda functions require a binary zip file deployed to AWS lambda, all three functions had to be replicated and compiled in separate repositories before deployment. Each lambda function contains X-Ray tracing and Cloudwatch logging for comprehensive monitoring of the entire pipeline.
